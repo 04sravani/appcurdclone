@@ -1,0 +1,52 @@
+<div class="container ">
+    <form #f="ngForm">  
+         <div class="my-4 px-100" >
+                <label for="email">Email:</label>
+                <input type="text" 
+                class="form-control  p-2 mt-2 " name="myemail" #myemail="ngModel" 
+                [ngModel] placeholder="UserName" required>
+                <div class="alert alert-danger" *ngIf="myemail.errors?.required&&myemail.touched">
+                    email is required
+                </div>
+                <div class="alert alert-danger" *ngIf="myemail.errors?.email&&myemail.touched">
+                   email should be ex:-abc@gmail.com
+               </div>
+               <label for="password">Password</label>
+               <input type="password" 
+                class="form-control p-2 mt-2" name="mypassword" #mypassword="ngModel" minlenth="6"
+                [ngModel] placeholder="password" required>
+                <div class="alert alert-danger" *ngIf="mypassword.errors?.required&&mypassword.touched">
+                    password required to this
+                </div>
+                <div class="alert alert-danger" *ngIf="mypassword.errors?.minlenth&&mypassword.touched">
+                    password length should be atleast 6 character
+                </div>
+        </div>
+        <button class="btn btn-primary" (click)="addUsers(f)">submit</button>
+        <button type="button" class="btn btn-secondary" (click)="f.resetForm()">Reset</button>
+    </form>     
+</div>
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+      <tr *ngFor="let p of result, index as i">
+        <th scope="col">{{p.id}}</th>
+        <th scope="col">{{p.firstName}}</th>
+        <th scope="col">{{p.lastName}}</th>
+        <button type="button" class="btn btn-success" (click)="editUsers(p)">Edit</button>
+        <button type="button" class="btn btn-warning" (click)="deleteUser(p)">Delete</button>
+        
+      </tr>
+    </thead>
+    
+    <tbody>
+
+    </tbody>
+  </table>
+  
