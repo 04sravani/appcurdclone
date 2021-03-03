@@ -6,7 +6,7 @@
                 class="form-control  p-2 mt-2 " name="myemail" #myemail="ngModel" 
                 [ngModel] placeholder="UserName" required>
                 <div class="alert alert-danger" *ngIf="myemail.errors?.required&&myemail.touched">
-                    email is required
+                    email is required for this field
                 </div>
                 <div class="alert alert-danger" *ngIf="myemail.errors?.email&&myemail.touched">
                    email should be ex:-abc@gmail.com
